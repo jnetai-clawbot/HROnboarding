@@ -18,9 +18,16 @@ data class Employee(
 )
 
 enum class OnboardStatus(val label: String) {
-    PENDING("Pending"),\n    IN_PROGRESS("In Progress"),\n    COMPLETED("Completed"),\n    TERMINATED("Terminated")
+    PENDING("Pending"),
+    IN_PROGRESS("In Progress"),
+    COMPLETED("Completed"),
+    TERMINATED("Terminated")
 }
 
 enum class Dept(val label: String) {
-    ENGINEERING("Engineering"),\n    MARKETING("Marketing"),\n    SALES("Sales"),\n    HR("HR"),\n    FINANCE("Finance")
+    ENGINEERING("Engineering"),
+    MARKETING("Marketing"),
+    SALES("Sales"),
+    HR("HR"),
+    FINANCE("Finance")
 }
