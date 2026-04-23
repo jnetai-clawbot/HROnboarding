@@ -8,6 +8,7 @@ import com.jnetai.hronboarding.data.Converters
 @Entity(tableName = "employees")
 @TypeConverters(Converters::class)
 data class Employee(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String = "",
     val department: String = "",
     val startDate: String = "",
