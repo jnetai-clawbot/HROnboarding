@@ -10,9 +10,9 @@ import com.jnetai.hronboarding.data.Converters
 data class Employee(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String = "",
-    val department: String = "",
+    val department: Dept = Dept.values()[0],
     val startDate: String = "",
-    val status: Dept = Dept.values()[0],
+    val onboardingStatus: OnboardStatus = OnboardStatus.values()[0],
     val mentorName: String = "",
     val notes: String = "",
     val createdAt: Long = System.currentTimeMillis()

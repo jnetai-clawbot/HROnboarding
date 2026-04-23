@@ -23,13 +23,21 @@ class AddActivity : AppCompatActivity() {
         supportActionBar?.title = "Add Employee"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.typeSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, OnboardStatus.values().map { it.label })
-        binding.statusSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Dept.values().map { it.label })
+        binding.typeSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Dept.values().map { it.label })
+        binding.statusSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, OnboardStatus.values().map { it.label })
 
         binding.saveButton.setOnClickListener {
-            val title = binding.titleEdit.text?.toString()?.trim() ?: ""
-            if (title.isBlank()) { Toast.makeText(this, "Title required", Toast.LENGTH_SHORT).show(); return@setOnClickListener }
-            lifecycleScope.launch { app.database.dao().insert(Employee(name = title, type = OnboardStatus.values()[binding.typeSpinner.selectedItemPosition], status = Dept.values()[binding.statusSpinner.selectedItemPosition], notes = binding.notesEdit.text?.toString()?.trim() ?: "")); finish() }
+            val name = binding.titleEdit.text?.toString()?.trim() ?: ""
+            if (name.isBlank()) { Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show(); return@setOnClickListener }
+            lifecycleScope.launch {
+                app.database.dao().insert(Employee(
+                    name = name,
+                    department = Dept.values()[binding.typeSpinner.selectedItemPosition],
+                    onboardingStatus = OnboardStatus.values()[binding.statusSpinner.selectedItemPosition],
+                    notes = binding.notesEdit.text?.toString()?.trim() ?: ""
+                ))
+                finish()
+            }
         }
     }
     override fun onSupportNavigateUp(): Boolean { finish(); return true }

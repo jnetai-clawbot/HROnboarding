@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showDetail(i: Employee) {
         binding.titleText.text = i.name
-        binding.detailText.text = "${i.type.label} · ${i.status.label}"
+        binding.detailText.text = "${i.department.label} · ${i.onboardingStatus.label}"
         binding.notesText.text = i.notes.ifEmpty { "No notes" }
     }
 
